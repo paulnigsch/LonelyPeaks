@@ -108,12 +108,12 @@ path.community-selected
   fill: #8b9c38;
   stroke: gray;
   stroke-width: 1;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 path.community 
 {
-  fill: #e3e1d7;
+  fill: #e3e1d700;
   stroke: gray;
   stroke-width: 1;
   opacity: 1;

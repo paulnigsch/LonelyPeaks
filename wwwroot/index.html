@@ -150,7 +150,23 @@ let storySitesActions = [undefined,
                 aerialwayClick(val1);},
             undefined]
 
-initStory();
+// check if skipintro=1
+let url_parts = document.URL.split("?")
+let skip_story = false;
+console.log("checkin url");
+if( url_parts.length === 2 ) {
+  let url_options = url_parts[1].split("&")
+  skip_story = url_options.filter( function (d) { return d ===  "skip=1" ;} ).length === 1;
+  
+}
+if ( skip_story === false) {
+  initStory();
+} else {
+  console.log("skipping story");
+  //d3.select('#story-content-overlay').attr('class', 'story-site hidden');
+  d3.select('#story-content-overlay').style('display', 'none');
+  d3.select('#help-content-overlay').style('display', 'none');
+}
     </script>
 
     </div> 

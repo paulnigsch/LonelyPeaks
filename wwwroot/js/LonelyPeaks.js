@@ -566,14 +566,49 @@ function draw() {
       })
       ;
 
-  let mapVlbg = d3.selectAll('.drawing-area')
-    .append('g')
-    .attr('class', 'map-vlbg');
+  // tiles
+
+  var tiles = [
+    [9,46 + 1],
+    [9,47 + 1],
+    [10,46 + 1],
+    [10,47 + 1]
+  ] 
+  
+  function tileSize( d) {
+      var pt1 = projection(d);
+      var pt2 = projection( [ d[0] + 1, d[1] - 1  ] );
+  
+      return [ Math.round( Math.abs( pt1[0] - pt2[0] )), Math.round(Math.abs( pt1[1] - pt2[1] ) )];
+  }
+  
+    //svg.append("g")
+    //d3.selectAll('.map-area')
+    console.log(" initializing background contours");
+    d3.selectAll('.drawing-area')
+          .append("g")
+          .attr('class', 'tiles-canvas')
+        .selectAll("image")
+        .data(tiles)
+        .enter().append("image")
+        .attr("xlink:href", function(d) { return "/data/LonelyPeaks/tiles/slopeshade/N" + String(( d[1]) -1  ).padStart(2,0) + "E" + String(d[0]).padStart(3,0) + ".png"; })
+        .attr("width",  function(d) {return tileSize(d)[0] + "px" ; } )
+        .attr("height", function(d) {return tileSize(d)[1] + "px" ; } )
+        .attr("x", function(d) { return projection(d)[0]; })
+        .attr("y", function(d) { return projection(d)[1] })
+        .attr("preserveAspectRatio", "none")
+        ;
+  
+
+  
 
   let mapCommunities = d3.selectAll('.drawing-area')
     .append('g')
     .attr('class', 'map-cont');
-
+    
+  let mapVlbg = d3.selectAll('.drawing-area')
+      .append('g')
+      .attr('class', 'map-vlbg');
 
   aerialwayCircle = d3.selectAll('.drawing-area')
     .append('g')
