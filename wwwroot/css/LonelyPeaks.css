@@ -1,0 +1,252 @@
+
+h1
+{
+  color: steelblue;
+
+}
+
+.peak
+{
+  stroke: black;
+  stroke-width: 0.4;
+  fill: blue;
+}
+
+.peak-lower
+{
+
+  stroke: blue;
+  stroke-width: 0.4;
+  fill: blue;
+  opacity: 0.2;
+}
+
+.aerialway
+{
+  stroke: black;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.aerialway-hi
+{
+  stroke: red;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+
+#zoom-slider-container
+{
+    position: relative;
+    left: 0px;
+    top: 40px;
+    width: 40px;
+    text-align: center;
+    float:left;
+}
+
+
+#altitude-slider-container
+{
+    position: relative;
+    left: 760px;
+    top: 40px;
+    width: 50px;
+    text-align: center;
+    float:left;
+}
+#altitude-slider-render-area
+{
+    position: relative;
+    left: 000px;
+    width: 20px;
+}
+
+.slider-bar
+{
+  fill : gray;
+  stroke : gray;
+}
+
+.slider-knob
+{
+  fill : lightblue;
+  stroke : lightblue;
+}
+
+.aerialway-circle path 
+{
+  stroke: #a7a7a7;
+  fill-opacity: 0.5;
+}
+
+path.vlbg
+{
+  stroke: black;
+  stroke-width: 3;
+  fill: none;
+}
+
+
+path.community-selected
+{
+  fill: #8b9c38;
+  stroke: gray;
+  stroke-width: 1;
+  opacity: 1;
+}
+
+path.community 
+{
+  fill: #e3e1d7;
+  stroke: gray;
+  stroke-width: 1;
+  opacity: 1;
+}
+
+
+.story-site
+{
+
+}
+
+.hidden
+{
+    display: none;
+}
+
+
+.navbar-overlay
+{
+  border: 0pt solid blue;
+  margin: 3pt;
+  position: absolute;
+  bottom: 0pt;
+  right: 0pt;
+  color: gray;
+
+}
+
+.story-container
+{
+  background-color: rgba( 217, 241, 256, 0.8632);
+
+  width: 300pt;
+  min-height: 100pt;
+
+  position: relative;
+  left: 125pt;
+  top: 150pt;
+
+  border-radius: 4pt;
+  padding: 4pt;
+  border: 2pt solid darkgray;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+
+  transition: left 10s;
+  transition-delay 3s;
+
+}
+
+.story-overlay
+{
+  background-color: rgba(92,92,92,0.3);
+
+  transition: opacity 2s;
+  transition-delay 3s;
+
+  width: 800pt;
+  height: 600pt;
+
+  position: absolute;
+
+  font: 15px Helvetica, sans-serif;
+  display: block;
+
+}
+#site-container
+{
+
+  margin-bottom: 30px;
+}
+.text-sup
+{
+  color: gray;
+  font-size: 10pt;
+}
+
+body 
+{
+  font: 15px Helvetica, sans-serif;
+}
+
+
+.help-page
+{
+  background-color: rgba( 217, 241, 256, 0.8632);
+
+  width: 300pt;
+  min-height: 100pt;
+
+  position: relative;
+  left: 125pt;
+  top: 150pt;
+
+  border-radius: 4pt;
+  padding: 4pt;
+  border: 2pt solid darkgray;
+
+  cursor: pointer;
+}
+
+.help-content-overlay
+{
+  background-color: rgba(217, 241, 255, 0.3);
+
+  width: 500pt;
+  height: 1000pt;
+
+  position: absolute;
+  left: 0pt;
+  top: 45pt;
+  font: 15px Helvetica, sans-serif;
+}
+
+
+#app-data-container
+{
+} 
+
+#circle-text
+{
+  font-size: 20pt;
+}
+
+
+#control-buttons {
+    display: flex;
+}
+
+.scale-drawing-area path {
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+}

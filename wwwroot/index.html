@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="/js/misc.js"></script>
+    <script src="/js/libs/d3.js"></script>
+    <script src="/js//slider.js"></script>
+    <script src="/js/draw_routines.js"></script>
+    <script src="/js/LonelyPeaks.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/LonelyPeaks.css">
+
+  </head>
+  <body>
+    <div id=app-body> 
+
+    <h1>Lonely Peaks</h1>
+
+
+
+
+
+    <div id=story-content-overlay class=story-overlay>
+      <div id=story-content-container class=story-container>
+        <div id=site-container>
+          <div id=site0 class="story-site active">
+            <p> Welcome to the 'Lonely Peaks' visualization!</p>
+
+            <p> This visualisation gives some insights about the peaks and aerialways in Voralberg.</p>
+
+          </div>
+          <div id=site1 class="story-site hidden">
+            <p> In Vorarlberg there are around <b>545 peaks</b> </p>
+
+            <p><span class=text-sup> (Source: Open Street Maps and cleaned by myself)</span> </p>
+          </div>
+          <div id=site2 class="story-site hidden">
+            <p>While there are 545 peaks there are also <b>284 aerialways</b>.</p>
+          </div>
+          <div id=site3 class="story-site hidden">
+
+            <p> The closest peak to aerialway distance is <b>40m</b>. </p>
+
+            <p> The <b>average</b> distance is <b>3.18km</b>  </p>
+            <p> and the <b>loneliest peak</b> is <b>12.74km</b> away from its nearest aerialway <br/> 
+            <span class=text-sup>(Kleiner Piz Buin to Breitspitzbahn)</span> <p>
+
+          </div>
+          <div id=site4 class="story-site hidden">
+            <p> The <b>average</b> distance from an aerialway to the next peak is <b>1.06km</b>.</p>
+
+            <p> The minimal distance is 40m <span class=text-sup>(Bettler Älpele)</span> </p>
+            <p> The <b>maximal</b> distance is <b>2.8km</b> <span class=text-sup>(Valisera I)</span> </p>
+
+          </div>
+          <div id=site5 class="story-site hidden">
+            <p>
+            Some people argue that there are too much aerialways in Voralberg.
+            </p>
+
+            <p>
+            And some people find that there are not enough aerialways at all.
+            </p>
+          </div>
+
+          <div id=site6 class="story-site hidden">
+            Decide for yourself!
+          </div>
+
+
+        <div class=navbar-overlay>
+          (click to advance)
+        </div>
+      </div>
+
+      </div>
+        </div>
+
+
+      <div id=help-content-overlay class=story-overlay>
+        <div id=help-page class="help-page">
+          <ul>
+            <li> click on a area to filter peaks by this area </li>
+            <li> click on an arealway to highlight the path to the nearest peak </li>
+            <li> hover over a peak to highlight the path to the nearest aerialway</li>
+            <li> use the slider on the right to filter peak by altitude </li>
+            <li> use mouse wheel to zoom in/out </li>
+            <li> double click to zoom in </li>
+            <li> hold left mouse button and move mouse to drag map</li>
+            <li> click the help button for help :) </li>
+          </ul>
+
+        </div>
+
+    </div>
+
+
+    <div id="control-buttons">
+          <div>
+              <button onclick="openHelp()">help</button>
+          </div>
+
+          <div>
+              <button onclick="reopenIntroduction()">Introduction</button>
+          </div>
+     </div>
+    
+    <div id=app-data-container>
+      <div id=zoom-slider-container class=slider>
+        Zoom
+        <div id=zoom-render-area class=slider></div>
+      </div>
+
+      <div id=altitude-slider-container class=slider>
+        Filter Peaks by Altitude
+        <div id=altitude-slider-render-area class=slider></div>
+      </div>
+
+      <div id="map-container"></div>
+
+    </div>
+
+
+    <script>
+
+altitudeSlider = new Slider("#altitude-slider-render-area", [70,300],[5,20], [400,3500]);
+altitudeSlider.initialize();
+altitudeSlider.addCallback(function(d) { updatePeaks(d[0], d[1]);});
+
+
+
+zoomSlider = new SliderBase("#zoom-render-area", [60,300],[5,20], [1,8]);
+zoomSlider.initialize();
+zoomSlider.addCallback(function(d) { manualZoom(d);});
+
+draw();
+
+let storySiteIndex = 1;
+let storySites = ["site0", "site1", "site2", "site3", "site4", "site5", "site6" ]
+let storySitesActions = [undefined,
+            undefined,
+            undefined,
+            undefined,
+            function () {
+                var kpb = peakData.filter(function (d) { return d.name === "Kleiner Piz Buin" }).last();
+                circleToNearestAerialway(kpb.pos[1], kpb.pos[0]);
+            },
+            function () {
+                let val1 = aerialwayData.filter(function (d) { return d.name === "Valisera I" }).last();
+                aerialwayClick(val1);},
+            undefined]
+
+initStory();
+    </script>
+
+    </div> 
+
+  </body>
+</html>
